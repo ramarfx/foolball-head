@@ -13,11 +13,16 @@ window.onload = () => {
   canvas.width = 1000;
   canvas.height = 600;
 
+  const audio = new Audio()
+  audio.src = '../assets/audio/backsound.m4a'
+  audio.autoplay = true
+  audio.loop = true
+
   class Game {
     constructor() {
       this.width = canvas.width;
       this.height = canvas.height;
-      this.debug = true;
+      this.debug = false;
       this.break = false;
       this.player1Score = 0;
       this.player2Score = 0;

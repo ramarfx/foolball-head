@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ball Head</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">World Head Football</h1>
+
+      <form method="post">
+        <div class="form-group">
+          <div class="flex">
+            <div>
+              <label for="player1">Player 1</label>
+              <input
+                type="text"
+                id="player1"
+                name="player1"
+                placeholder="player 1 name"
+                onchange="checkInput()"
+              />
+            </div>
+            <div>
+              <label for="player2">Player 2</label>
+              <input
+                type="text"
+                id="player2"
+                name="player2"
+                placeholder="player 2s name"
+                onchange="checkInput()"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="level">Level</label>
+          <select name="level" id="level">
+            <option value="easy" selected>Easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div class="flex">
+            <div>
+              <label for="player1flag">Player 1</label>
+              <select name="player1flag" id="player1flag">
+                <option value="germany" selected>germany</option>
+                <option value="italy">italy</option>
+                <option value="japan">japan</option>
+                <option value="netherlands">netherlands</option>
+                <option value="spain">spain</option>
+                <option value="brazil">brazil</option>
+                <option value="england">england</option>
+                <option value="portugal">portugal</option>
+              </select>
+            </div>
+            <div>
+              <label for="player2flag">Player 2</label>
+              <select name="player2flag" id="player2flag">
+                <option value="germany">germany</option>
+                <option value="italy" selected>italy</option>
+                <option value="japan">japan</option>
+                <option value="netherlands">netherlands</option>
+                <option value="spain">spain</option>
+                <option value="brazil">brazil</option>
+                <option value="england">england</option>
+                <option value="portugal">portugal</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ball</label>
+          <div class="flex">
+            <div>
+              <label for="ball1">
+                <img src="./assets/ball/Ball 01.png" alt="" />
+              </label>
+              <input
+                type="radio"
+                name="ball"
+                id="ball1"
+                value="ball1"
+                checked
+              />
+            </div>
+            <div>
+              <label for="ball2">
+                <img src="./assets/ball/Ball 02.png" alt="" />
+              </label>
+              <input type="radio" name="ball" id="ball2" value="ball2" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" id="submit" disabled>Play</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function checkInput() {
+        if (document.getElementById('player1').value == '' || document.getElementById('player2').value == '') {
+            document.getElementById('submit').disabled = true
+            console.log('keduanya mati coeg');
+        } else {
+            document.getElementById('submit').disabled = false
+        }
+      }
+
+      document.querySelector("form").onsubmit = (e) => {
+        e.preventDefault();
+
+        const target = e.target;
+
+        sessionStorage.setItem("player1", target.player1.value);
+        sessionStorage.setItem("player2", target.player2.value);
+
+        sessionStorage.setItem("level", target.level.value);
+        sessionStorage.setItem("ball", target.ball.value);
+
+        sessionStorage.setItem("player1flag", target.player1flag.value);
+        sessionStorage.setItem("player2flag", target.player2flag.value);
+
+        window.location.href = 'game.html';
+      };
+    </script>
+  </body>
+</html>

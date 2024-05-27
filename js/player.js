@@ -13,20 +13,15 @@ class Player {
 const player1Flag = sessionStorage.getItem('player1flag')
 const player2Flag = sessionStorage.getItem('player2flag')
 
-const selectPlayerFlag = (playerflag) => {
-  if (playerflag === 'brazil') {
-    return document.getElementById('brazil')
-  } else if (playerflag === 'england') {
-    return document.getElementById('england')
-  } else if (playerflag === 'spain') {
-    return document.getElementById('spain')
-  }
-}
+// const playerFlag = {
+//   player1: document.getElementById(player1Flag),
+//   player2: document.getElementById(player2Flag)
+// }
 
 export class Player1 extends Player {
   constructor(game) {
     super(game);
-    this.image = selectPlayerFlag(player1Flag)
+    this.image = document.getElementById(player1Flag)
   }
 
   draw(ctx) {
@@ -56,6 +51,7 @@ export class Player2 extends Player {
     super(game);
     this.x = this.game.width - 400;
     this.y = this.game.height / 2 + 40;
+    this.image = document.getElementById(player2Flag)
   }
 
   draw(ctx) {

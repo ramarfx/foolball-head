@@ -13,16 +13,16 @@ window.onload = () => {
   canvas.width = 1000;
   canvas.height = 600;
 
-  // const audio = new Audio()
-  // audio.src = '../assets/audio/backsound.m4a'
-  // audio.autoplay = true
-  // audio.loop = true
+  const audio = new Audio()
+  audio.src = '../assets/audio/backsound.m4a'
+  audio.autoplay = true
+  audio.loop = true
 
-  // window.addEventListener('keyup', (e) => {
-  //   if (e.code === 'KeyM') {
-  //     audio.paused ? audio.play() : audio.pause()
-  //   }
-  // })
+  window.addEventListener('keyup', (e) => {
+    if (e.code === 'KeyM') {
+      audio.paused ? audio.play() : audio.pause()
+    }
+  })
 
   class Game {
     constructor() {

@@ -2,10 +2,10 @@ class Player {
   constructor(game) {
     this.game = game;
     this.x = 200;
-    this.y = this.game.height / 2 + 40;
+    this.y = this.game.height / 2 + 70;
     this.width = 150;
     this.height = 150;
-    this.speed = 5;
+    this.speed = 7;
     this.image = document.getElementById("player1");
   }
 }
@@ -44,8 +44,8 @@ export class Player1 extends Player {
 export class Player2 extends Player {
   constructor(game) {
     super(game);
-    this.x = this.game.width - 400;
-    this.y = this.game.height / 2 + 40;
+    this.x = this.game.width - 340;
+    this.y = this.game.height / 2 + 70;
     this.image = document.getElementById(player2Flag)
   }
 

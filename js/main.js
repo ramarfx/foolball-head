@@ -1,6 +1,7 @@
 import { Background } from "./background.js";
 import { InputControl } from "./controls.js";
 import { Country } from "./country.js";
+import { Gawang1, Gawang2 } from "./gawang.js";
 import { Player1, Player2 } from "./player.js";
 
 window.onload = () => {
@@ -18,6 +19,8 @@ window.onload = () => {
       this.player1 = new Player1(this);
       this.player2 = new Player2(this);
       this.country = new Country(this);
+      this.gawang1 = new Gawang1(this);
+      this.gawang2 = new Gawang2(this);
       this.input = new InputControl();
     }
 
@@ -26,6 +29,8 @@ window.onload = () => {
       this.country.draw(ctx);
       this.player1.draw(ctx);
       this.player2.draw(ctx);
+      this.gawang1.draw(ctx);
+      this.gawang2.draw(ctx);
     }
 
     update() {

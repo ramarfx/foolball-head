@@ -13,11 +13,6 @@ class Player {
 const player1Flag = sessionStorage.getItem('player1flag')
 const player2Flag = sessionStorage.getItem('player2flag')
 
-// const playerFlag = {
-//   player1: document.getElementById(player1Flag),
-//   player2: document.getElementById(player2Flag)
-// }
-
 export class Player1 extends Player {
   constructor(game) {
     super(game);

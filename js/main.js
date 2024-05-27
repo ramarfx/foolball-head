@@ -1,5 +1,6 @@
 import { Background } from "./background.js";
 import { InputControl } from "./controls.js";
+import { Country } from "./country.js";
 import { Player1, Player2 } from "./player.js";
 
 window.onload = () => {
@@ -16,11 +17,13 @@ window.onload = () => {
       this.background = new Background(this);
       this.player1 = new Player1(this);
       this.player2 = new Player2(this);
+      this.country = new Country(this);
       this.input = new InputControl();
     }
 
     draw() {
       this.background.draw(ctx);
+      this.country.draw(ctx);
       this.player1.draw(ctx);
       this.player2.draw(ctx);
     }

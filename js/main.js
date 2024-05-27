@@ -1,3 +1,4 @@
+import { UI } from "./UI.js";
 import { Background } from "./background.js";
 import { Ball } from "./ball.js";
 import { InputControl } from "./controls.js";
@@ -28,6 +29,7 @@ window.onload = () => {
       this.gawang2 = new Gawang2(this, this.ball);
       this.gawang1 = new Gawang1(this, this.ball);
       this.input = new InputControl(this);
+      this.ui = new UI(this);
       this.init()
     }
 
@@ -50,6 +52,7 @@ window.onload = () => {
       this.ball.draw(ctx);
       this.gawang1.draw(ctx);
       this.gawang2.draw(ctx);
+      this.ui.draw(ctx);
     }
 
     update() {
@@ -66,6 +69,8 @@ window.onload = () => {
         this.draw()
         this.reset()
       }
+
+      this.ui.draw(ctx)
     }
 
     reset() {

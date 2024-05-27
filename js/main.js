@@ -1,4 +1,5 @@
 import { Background } from "./background.js";
+import { Ball } from "./ball.js";
 import { InputControl } from "./controls.js";
 import { Country } from "./country.js";
 import { Gawang1, Gawang2 } from "./gawang.js";
@@ -15,13 +16,30 @@ window.onload = () => {
     constructor() {
       this.width = canvas.width;
       this.height = canvas.height;
+      this.debug = true;
+      this.break = false;
+      this.player1Score = 0;
+      this.player2Score = 0;
       this.background = new Background(this);
+      this.country = new Country(this);
       this.player1 = new Player1(this);
       this.player2 = new Player2(this);
+      this.ball = new Ball(this, this.player1, this.player2);
+      this.gawang2 = new Gawang2(this, this.ball);
+      this.gawang1 = new Gawang1(this, this.ball);
+      this.input = new InputControl(this);
+      this.init()
+    }
+
+    init(){
+      this.background = new Background(this);
       this.country = new Country(this);
-      this.gawang1 = new Gawang1(this);
-      this.gawang2 = new Gawang2(this);
-      this.input = new InputControl();
+      this.player1 = new Player1(this);
+      this.player2 = new Player2(this);
+      this.ball = new Ball(this, this.player1, this.player2);
+      this.gawang2 = new Gawang2(this, this.ball);
+      this.gawang1 = new Gawang1(this, this.ball);
+      this.input = new InputControl(this);
     }
 
     draw() {
@@ -29,13 +47,30 @@ window.onload = () => {
       this.country.draw(ctx);
       this.player1.draw(ctx);
       this.player2.draw(ctx);
+      this.ball.draw(ctx);
       this.gawang1.draw(ctx);
       this.gawang2.draw(ctx);
     }
 
     update() {
-      this.player1.update(this.input);
-      this.player2.update(this.input);
+      if (!this.break) {
+        this.player1.update(this.input);
+        this.player2.update(this.input);
+
+        this.ball.update()
+
+        this.gawang1.update()
+        this.gawang2.update()
+      } else {
+        console.log(this.player1Score, this.player2Score);
+        this.draw()
+        this.reset()
+      }
+    }
+
+    reset() {
+      this.break = false;
+      this.init();
     }
   }
 

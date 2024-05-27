@@ -3,8 +3,8 @@ class Player {
     this.game = game;
     this.x = 200;
     this.y = this.game.height / 2 + 70;
-    this.width = 150;
-    this.height = 150;
+    this.width = 100;
+    this.height = 100;
     this.speed = 7;
     this.image = document.getElementById("player1");
   }
@@ -20,7 +20,10 @@ export class Player1 extends Player {
   }
 
   draw(ctx) {
-    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    if (this.game.debug) ctx.strokeRect(this.x, this.y, this.width, this.height);
+    ctx.save()
+    ctx.drawImage(this.image,70, 50, 200, 248, this.x, this.y, this.width, this.height);
+    ctx.restore()
   }
 
   update(input) {
@@ -50,10 +53,12 @@ export class Player2 extends Player {
   }
 
   draw(ctx) {
+    if (this.game.debug) ctx.strokeRect(this.x, this.y, this.width, this.height);
     ctx.save();
     ctx.scale(-1, 1);
     ctx.drawImage(
       this.image,
+      70, 50, 200, 248,
       -this.x - this.width,
       this.y,
       this.width,
@@ -76,5 +81,6 @@ export class Player2 extends Player {
     if (this.y <= 330) this.y = 330;
     if (this.y >= 410) this.y = 410;
     if (this.x <= 0) this.x = 0;
+
   }
 }

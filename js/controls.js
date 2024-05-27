@@ -9,6 +9,8 @@ export class InputControl {
       if (e.code === 'Backquote') {
         this.game.debug = !this.game.debug;
       }
+
+      console.log(this.keys);
     };
     window.onkeyup = (e) => {
       this.keys.splice(this.keys.indexOf(e.code), 1);

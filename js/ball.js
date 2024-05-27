@@ -18,12 +18,12 @@ export class Ball {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 
-    update(){
-        if (checkCollision(this, this.player1)) {
-            this.x += 10
+    update(input){
+        if (checkCollision(this, this.player1) && input.keys.includes('ShiftLeft')) {
+            this.x += 30
         }
-        if (checkCollision(this, this.player2)) {
-            this.x -= 10
+        if (checkCollision(this, this.player2) && input.keys.includes('Space')) {
+            this.x -= 30
         }
     }
 }
